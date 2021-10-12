@@ -1,0 +1,1770 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 3299px;
+            height: 1678px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/50KM_Max_Radius_SC_Line_1.js"></script>
+        <script src="data/Sales_all_300921_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[1.42518430322351,-24.512073311054966],[20.845351749360184,13.690964916816524]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_50KM_Max_Radius_SC_Line_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">sc name</th>\
+                        <td>' + (feature.properties['sc name'] !== null ? autolinker.link(feature.properties['sc name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">long</th>\
+                        <td>' + (feature.properties['long'] !== null ? autolinker.link(feature.properties['long'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['lat'] !== null ? autolinker.link(feature.properties['lat'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Radius_Dis'] !== null ? autolinker.link(feature.properties['Radius_Dis'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['area'] !== null ? autolinker.link(feature.properties['area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Country'] !== null ? autolinker.link(feature.properties['Country'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_50KM_Max_Radius_SC_Line_1_0() {
+            return {
+                pane: 'pane_50KM_Max_Radius_SC_Line_1',
+                opacity: 1,
+                color: 'rgba(72,123,182,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_50KM_Max_Radius_SC_Line_1');
+        map.getPane('pane_50KM_Max_Radius_SC_Line_1').style.zIndex = 401;
+        map.getPane('pane_50KM_Max_Radius_SC_Line_1').style['mix-blend-mode'] = 'normal';
+        var layer_50KM_Max_Radius_SC_Line_1 = new L.geoJson(json_50KM_Max_Radius_SC_Line_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_50KM_Max_Radius_SC_Line_1',
+            layerName: 'layer_50KM_Max_Radius_SC_Line_1',
+            pane: 'pane_50KM_Max_Radius_SC_Line_1',
+            onEachFeature: pop_50KM_Max_Radius_SC_Line_1,
+            style: style_50KM_Max_Radius_SC_Line_1_0,
+        });
+        bounds_group.addLayer(layer_50KM_Max_Radius_SC_Line_1);
+        map.addLayer(layer_50KM_Max_Radius_SC_Line_1);
+        function pop_Sales_all_300921_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['contractid'] !== null ? autolinker.link(feature.properties['contractid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['customerid'] !== null ? autolinker.link(feature.properties['customerid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['accountnum'] !== null ? autolinker.link(feature.properties['accountnum'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['customerst'] !== null ? autolinker.link(feature.properties['customerst'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['servicecen'] !== null ? autolinker.link(feature.properties['servicecen'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['dsr1'] !== null ? autolinker.link(feature.properties['dsr1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['dsr1_id'] !== null ? autolinker.link(feature.properties['dsr1_id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['dsr1_numbe'] !== null ? autolinker.link(feature.properties['dsr1_numbe'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['activation'] !== null ? autolinker.link(feature.properties['activation'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['producttyp'] !== null ? autolinker.link(feature.properties['producttyp'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['country'] !== null ? autolinker.link(feature.properties['country'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['region'] !== null ? autolinker.link(feature.properties['region'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['latitude'] !== null ? autolinker.link(feature.properties['latitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longitude'] !== null ? autolinker.link(feature.properties['longitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Validation'] !== null ? autolinker.link(feature.properties['Validation'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon_url'] !== null ? autolinker.link(feature.properties['icon_url'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Sales_all_300921_2_0(feature) {
+            switch(String(feature.properties['servicecen'])) {
+                case 'ABENGOUROU':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(138,218,19,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ABOISSO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,205,16,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ada-Kasseh Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,96,181,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'AGBOVILLE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(139,119,221,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Agogo Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(74,204,178,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Akim Oda Partner shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(94,119,210,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Asamankese Partner shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,216,54,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Asankragua':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,216,54,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Asesewa':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,196,117,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Assin Fosu Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,47,202,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Atebubu Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,127,27,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Banda Nkwanta Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(20,179,227,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Begoro Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(113,102,240,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bibiani Service Center':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,55,121,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bogoso Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,55,121,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'BOUAFLE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,126,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'BOUAKE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,129,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'BOUNA':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,140,205,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'DABOU':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,219,105,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Dambai':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,181,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'DANANE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(197,200,103,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'DAOUKRO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,116,215,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'DIVO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,135,201,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Dormaa Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,210,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'FRESCO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,135,141,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'GAGNOA':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,135,141,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'GUESSABO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,233,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'GUIGLO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(135,121,215,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ho':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(135,121,215,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'HQ Mali':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'I-SFM Abidjan Nord':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,54,86,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'I-SFM Abidjan Sud':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(226,54,86,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'I-SFM Centre Est':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,213,62,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'I-SFM CENTRE NORD':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,222,166,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'I-SFM OUEST':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,113,231,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'I-SFM SUD OUEST':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(131,218,49,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Jasikan Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,216,206,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kasoa Partnershop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,169,78,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kete Krachi Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(29,78,204,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kintampo Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,112,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Koforidua':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(87,238,135,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'KORHOGO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(39,66,202,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MAN':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,234,133,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'NAVRONGO PARTNER SHOP':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,134,122,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Nkwakwa Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(143,103,223,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Obuasi Service Centre':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,50,221,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Offinso Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(174,219,52,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'OUME':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,189,120,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Partnership Sales':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(23,216,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Saint louis':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,127,82,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sameraboi Partner Shop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,127,82,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SAN PEDRO':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(210,80,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SAWLA PARTNER SHOP':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(161,82,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC  Diouloulou':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(161,82,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Bakel':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(198,117,232,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC BAMAKO 1':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Bouguini':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,121,70,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Dagana':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,93,56,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Dahara':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,148,63,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Diaroume':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,148,63,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Diouloulou':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(109,37,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Diourbel':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,147,89,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Fana':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,199,94,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Gandiaye':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,82,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC GANDIAYE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,75,109,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Kaffrine':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,147,215,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Kayes':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,206,21,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Kedougou':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,52,216,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Kita':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(47,211,25,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Kolda':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(35,201,148,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Koungheul':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,196,126,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Louga':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,49,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Ndioum':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(194,201,57,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Ngaye Mekhe':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(188,211,56,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Nioro':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,186,247,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Nioro du Sahel':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,108,167,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Ourossogui':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Ouroussogui':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Saint-Louis':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(49,229,238,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Segou':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(136,145,225,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Tambacounda':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(16,210,65,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Velingara':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,198,122,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Yelimane':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,186,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SC Ziguinchor':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(71,151,208,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SOUBRE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(144,83,219,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sunyani':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,108,179,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TABOU':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,153,220,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Takoradi':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(106,198,217,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TAMALE':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(51,206,43,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TELESALES':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(50,213,170,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tepa':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,148,222,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Tepa Service Center 2':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(89,226,114,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'TOUMODI':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(206,200,14,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'VAVOUA':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(120,161,207,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Wa':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,101,147,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Walewale PartnerShop':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,138,237,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Yendi':
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,69,139,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Sales_all_300921_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,109,200,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Sales_all_300921_2');
+        map.getPane('pane_Sales_all_300921_2').style.zIndex = 402;
+        map.getPane('pane_Sales_all_300921_2').style['mix-blend-mode'] = 'normal';
+        var layer_Sales_all_300921_2 = new L.geoJson(json_Sales_all_300921_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Sales_all_300921_2',
+            layerName: 'layer_Sales_all_300921_2',
+            pane: 'pane_Sales_all_300921_2',
+            onEachFeature: pop_Sales_all_300921_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Sales_all_300921_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Sales_all_300921_2);
+        map.addLayer(layer_Sales_all_300921_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Sales_all_300921<br /><table><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ABENGOUROU0.png" /></td><td>ABENGOUROU</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ABOISSO1.png" /></td><td>ABOISSO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AdaKassehServiceCentre2.png" /></td><td>Ada-Kasseh Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AGBOVILLE3.png" /></td><td>AGBOVILLE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AgogoServiceCentre4.png" /></td><td>Agogo Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AkimOdaPartnershop5.png" /></td><td>Akim Oda Partner shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AsamankesePartnershop6.png" /></td><td>Asamankese Partner shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Asankragua7.png" /></td><td>Asankragua</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Asesewa8.png" /></td><td>Asesewa</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AssinFosuPartnerShop9.png" /></td><td>Assin Fosu Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_AtebubuServiceCentre10.png" /></td><td>Atebubu Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BandaNkwantaPartnerShop11.png" /></td><td>Banda Nkwanta Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BegoroPartnerShop12.png" /></td><td>Begoro Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BibianiServiceCenter13.png" /></td><td>Bibiani Service Center</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BogosoServiceCentre14.png" /></td><td>Bogoso Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BOUAFLE15.png" /></td><td>BOUAFLE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BOUAKE16.png" /></td><td>BOUAKE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_BOUNA17.png" /></td><td>BOUNA</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_DABOU18.png" /></td><td>DABOU</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Dambai19.png" /></td><td>Dambai</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_DANANE20.png" /></td><td>DANANE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_DAOUKRO21.png" /></td><td>DAOUKRO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_DIVO22.png" /></td><td>DIVO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_DormaaPartnerShop23.png" /></td><td>Dormaa Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_FRESCO24.png" /></td><td>FRESCO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_GAGNOA25.png" /></td><td>GAGNOA</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_GUESSABO26.png" /></td><td>GUESSABO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_GUIGLO27.png" /></td><td>GUIGLO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Ho28.png" /></td><td>Ho</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_HQMali29.png" /></td><td>HQ Mali</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ISFMAbidjanNord30.png" /></td><td>I-SFM Abidjan Nord</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ISFMAbidjanSud31.png" /></td><td>I-SFM Abidjan Sud</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ISFMCentreEst32.png" /></td><td>I-SFM Centre Est</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ISFMCENTRENORD33.png" /></td><td>I-SFM CENTRE NORD</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ISFMOUEST34.png" /></td><td>I-SFM OUEST</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ISFMSUDOUEST35.png" /></td><td>I-SFM SUD OUEST</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_JasikanServiceCentre36.png" /></td><td>Jasikan Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_KasoaPartnershop37.png" /></td><td>Kasoa Partnershop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_KeteKrachiPartnerShop38.png" /></td><td>Kete Krachi Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_KintampoServiceCentre39.png" /></td><td>Kintampo Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Koforidua40.png" /></td><td>Koforidua</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_KORHOGO41.png" /></td><td>KORHOGO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_MAN42.png" /></td><td>MAN</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_NAVRONGOPARTNERSHOP43.png" /></td><td>NAVRONGO PARTNER SHOP</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_NkwakwaPartnerShop44.png" /></td><td>Nkwakwa Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_ObuasiServiceCentre45.png" /></td><td>Obuasi Service Centre</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_OffinsoPartnerShop46.png" /></td><td>Offinso Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_OUME47.png" /></td><td>OUME</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_PartnershipSales48.png" /></td><td>Partnership Sales</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Saintlouis49.png" /></td><td>Saint louis</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SameraboiPartnerShop50.png" /></td><td>Sameraboi Partner Shop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SANPEDRO51.png" /></td><td>SAN PEDRO</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SAWLAPARTNERSHOP52.png" /></td><td>SAWLA PARTNER SHOP</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCDiouloulou53.png" /></td><td>SC  Diouloulou</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCBakel54.png" /></td><td>SC Bakel</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCBAMAKO155.png" /></td><td>SC BAMAKO 1</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCBouguini56.png" /></td><td>SC Bouguini</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCDagana57.png" /></td><td>SC Dagana</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCDahara58.png" /></td><td>SC Dahara</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCDiaroume59.png" /></td><td>SC Diaroume</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCDiouloulou60.png" /></td><td>SC Diouloulou</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCDiourbel61.png" /></td><td>SC Diourbel</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCFana62.png" /></td><td>SC Fana</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCGandiaye63.png" /></td><td>SC Gandiaye</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCGANDIAYE64.png" /></td><td>SC GANDIAYE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCKaffrine65.png" /></td><td>SC Kaffrine</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCKayes66.png" /></td><td>SC Kayes</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCKedougou67.png" /></td><td>SC Kedougou</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCKita68.png" /></td><td>SC Kita</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCKolda69.png" /></td><td>SC Kolda</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCKoungheul70.png" /></td><td>SC Koungheul</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCLouga71.png" /></td><td>SC Louga</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCNdioum72.png" /></td><td>SC Ndioum</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCNgayeMekhe73.png" /></td><td>SC Ngaye Mekhe</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCNioro74.png" /></td><td>SC Nioro</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCNioroduSahel75.png" /></td><td>SC Nioro du Sahel</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCOurossogui76.png" /></td><td>SC Ourossogui</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCOuroussogui77.png" /></td><td>SC Ouroussogui</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCSaintLouis78.png" /></td><td>SC Saint-Louis</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCSegou79.png" /></td><td>SC Segou</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCTambacounda80.png" /></td><td>SC Tambacounda</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCVelingara81.png" /></td><td>SC Velingara</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCYelimane82.png" /></td><td>SC Yelimane</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SCZiguinchor83.png" /></td><td>SC Ziguinchor</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_SOUBRE84.png" /></td><td>SOUBRE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Sunyani85.png" /></td><td>Sunyani</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_TABOU86.png" /></td><td>TABOU</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Takoradi87.png" /></td><td>Takoradi</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_TAMALE88.png" /></td><td>TAMALE</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_TELESALES89.png" /></td><td>TELESALES</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Tepa90.png" /></td><td>Tepa</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_TepaServiceCenter291.png" /></td><td>Tepa Service Center 2</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_TOUMODI92.png" /></td><td>TOUMODI</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_VAVOUA93.png" /></td><td>VAVOUA</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Wa94.png" /></td><td>Wa</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_WalewalePartnerShop95.png" /></td><td>Walewale PartnerShop</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_Yendi96.png" /></td><td>Yendi</td></tr><tr><td style="text-align: center;"><img src="legend/Sales_all_300921_2_97.png" /></td><td></td></tr></table>': layer_Sales_all_300921_2,'<img src="legend/50KM_Max_Radius_SC_Line_1.png" /> 50KM_Max_Radius_SC_Line': layer_50KM_Max_Radius_SC_Line_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);
+        setBounds();
+        resetLabels([layer_50KM_Max_Radius_SC_Line_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_50KM_Max_Radius_SC_Line_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_50KM_Max_Radius_SC_Line_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_50KM_Max_Radius_SC_Line_1]);
+        });
+        </script>
+    </body>
+</html>
